@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | ComplaintBox</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+
+            <div class="brand-icon">
+                CB
+            </div>
+
+            <span>ComplaintBox</span>
+
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="/dashboard" class="nav-item active">
+                <span>▦</span>
+                Dashboard
+            </a>
+
+            <a href="/complaints" class="nav-item">
+                <span>⚠</span>
+                Complaints
+            </a>
+
+            <a href="/residents" class="nav-item">
+                <span>♙</span>
+                Residents
+            </a>
+
+            <a href="/staff" class="nav-item">
+                <span>⚙</span>
+                Staff
+            </a>
+
+            <a href="/categories" class="nav-item">
+                <span>▤</span>
+                Categories
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="/login" class="nav-item">
+                <span>↪</span>
+                Logout
+            </a>
+
+        </div>
+
+    </aside>
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>Dashboard</h1>
+
+                <p>
+                    Hostel maintenance overview
+                </p>
+
+            </div>
+
+            <div class="profile">
+
+                <div class="profile-avatar">
+                    W
+                </div>
+
+                <div>
+                    <strong>Warden</strong>
+                    <small>Administrator</small>
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- STATS -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    #
+                </div>
+
+                <div>
+                    <span>Total Complaints</span>
+                    <strong id="totalComplaints">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    !
+                </div>
+
+                <div>
+                    <span>Open</span>
+                    <strong id="openComplaints">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    ↻
+                </div>
+
+                <div>
+                    <span>In Progress</span>
+                    <strong id="progressComplaints">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+            <div class="stat-card danger-card">
+
+                <div class="stat-icon red">
+                    ⚠
+                </div>
+
+                <div>
+                    <span>Overdue</span>
+                    <strong id="overdueComplaints">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- QUICK ACTIONS -->
+
+        <section class="dashboard-grid">
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h2>Quick Actions</h2>
+                        <p>Manage your hostel system</p>
+                    </div>
+
+                </div>
+
+                <div class="quick-actions">
+
+                    <a
+                        href="/complaints"
+                        class="quick-action"
+                    >
+                        <span>⚠</span>
+                        <strong>Manage Complaints</strong>
+                        <small>View and update complaints</small>
+                    </a>
+
+                    <a
+                        href="/residents"
+                        class="quick-action"
+                    >
+                        <span>♙</span>
+                        <strong>Residents</strong>
+                        <small>Manage hostel residents</small>
+                    </a>
+
+                    <a
+                        href="/staff"
+                        class="quick-action"
+                    >
+                        <span>⚙</span>
+                        <strong>Staff</strong>
+                        <small>Manage maintenance staff</small>
+                    </a>
+
+                    <a
+                        href="/categories"
+                        class="quick-action"
+                    >
+                        <span>▤</span>
+                        <strong>Categories</strong>
+                        <small>Manage complaint categories</small>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- OVERDUE -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h2>Overdue Complaints</h2>
+                        <p>Complaints older than 5 days</p>
+                    </div>
+
+                    <a href="/complaints" class="text-link">
+                        View all →
+                    </a>
+
+                </div>
+
+                <div id="overdueList" class="compact-list">
+
+                    <div class="empty-state">
+                        Loading...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- RECENT COMPLAINTS -->
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <h2>Recent Complaints</h2>
+                    <p>Latest maintenance requests</p>
+                </div>
+
+                <a href="/complaints" class="text-link">
+                    View all →
+                </a>
+
+            </div>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Category</th>
+                        <th>Room</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                    </tr>
+
+                    </thead>
+
+                    <tbody id="recentComplaints">
+
+                    <tr>
+                        <td colspan="5" class="empty-state">
+                            Loading complaints...
+                        </td>
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="/js/app.js"></script>
+
+</body>
+</html>

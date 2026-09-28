@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Complaints | ComplaintBox</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+
+            <div class="brand-icon">
+                CB
+            </div>
+
+            <span>ComplaintBox</span>
+
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="/dashboard" class="nav-item">
+                <span>▦</span>
+                Dashboard
+            </a>
+
+            <a href="/complaints" class="nav-item active">
+                <span>⚠</span>
+                Complaints
+            </a>
+
+            <a href="/residents" class="nav-item">
+                <span>♙</span>
+                Residents
+            </a>
+
+            <a href="/staff" class="nav-item">
+                <span>⚙</span>
+                Staff
+            </a>
+
+            <a href="/categories" class="nav-item">
+                <span>▤</span>
+                Categories
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="/login" class="nav-item">
+                <span>↪</span>
+                Logout
+            </a>
+
+        </div>
+
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>Complaints</h1>
+
+                <p>
+                    Track and manage hostel maintenance complaints
+                </p>
+
+            </div>
+
+            <button
+                class="btn btn-primary"
+                onclick="openComplaintModal()"
+            >
+                + New Complaint
+            </button>
+
+        </header>
+
+        <!-- FILTERS -->
+
+        <section class="filter-bar">
+
+            <div class="search-box">
+
+                <span>⌕</span>
+
+                <input
+                    type="text"
+                    id="complaintSearch"
+                    placeholder="Search complaints..."
+                    onkeyup="filterComplaints()"
+                >
+
+            </div>
+
+            <select
+                id="statusFilter"
+                onchange="filterComplaints()"
+            >
+
+                <option value="">All Status</option>
+                <option value="OPEN">Open</option>
+                <option value="IN_PROGRESS">In Progress</option>
+                <option value="RESOLVED">Resolved</option>
+
+            </select>
+
+        </section>
+
+        <!-- TABLE -->
+
+        <section class="panel">
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Category</th>
+                        <th>Room</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Created</th>
+                        <th>Action</th>
+                    </tr>
+
+                    </thead>
+
+                    <tbody id="complaintTable">
+
+                    <tr>
+
+                        <td colspan="7" class="empty-state">
+                            Loading complaints...
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- COMPLAINT MODAL -->
+
+<div
+    id="complaintModal"
+    class="modal"
+>
+
+    <div class="modal-card">
+
+        <div class="modal-header">
+
+            <div>
+                <h2>Raise Complaint</h2>
+                <p>Report a hostel maintenance issue</p>
+            </div>
+
+            <button
+                class="modal-close"
+                onclick="closeComplaintModal()"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <form id="complaintForm">
+
+            <div class="form-group">
+
+                <label>Category</label>
+
+                <select id="complaintCategory" required>
+
+                    <option value="">
+                        Select category
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Room Number</label>
+
+                <input
+                    type="text"
+                    id="complaintRoom"
+                    placeholder="Example: A101"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Description</label>
+
+                <textarea
+                    id="complaintDescription"
+                    rows="5"
+                    placeholder="Describe the problem..."
+                    required
+                ></textarea>
+
+            </div>
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    onclick="closeComplaintModal()"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Submit Complaint
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script src="/js/app.js"></script>
+
+</body>
+</html>

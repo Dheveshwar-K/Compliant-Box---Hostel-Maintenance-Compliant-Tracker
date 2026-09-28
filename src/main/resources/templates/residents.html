@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Residents | ComplaintBox</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+
+            <div class="brand-icon">
+                CB
+            </div>
+
+            <span>ComplaintBox</span>
+
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="/dashboard" class="nav-item">
+                <span>▦</span>
+                Dashboard
+            </a>
+
+            <a href="/complaints" class="nav-item">
+                <span>⚠</span>
+                Complaints
+            </a>
+
+            <a href="/residents" class="nav-item active">
+                <span>♙</span>
+                Residents
+            </a>
+
+            <a href="/staff" class="nav-item">
+                <span>⚙</span>
+                Staff
+            </a>
+
+            <a href="/categories" class="nav-item">
+                <span>▤</span>
+                Categories
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+                <h1>Residents</h1>
+                <p>Hostel resident management</p>
+            </div>
+
+            <button
+                class="btn btn-primary"
+                onclick="openResidentModal()"
+            >
+                + Add Resident
+            </button>
+
+        </header>
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <h2>All Residents</h2>
+                    <p>Registered hostel residents</p>
+                </div>
+
+            </div>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Room Number</th>
+                        <th>Actions</th>
+                    </tr>
+
+                    </thead>
+
+                    <tbody id="residentTable">
+
+                    <tr>
+                        <td colspan="4" class="empty-state">
+                            Loading residents...
+                        </td>
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- RESIDENT MODAL -->
+
+<div id="residentModal" class="modal">
+
+    <div class="modal-card">
+
+        <div class="modal-header">
+
+            <div>
+                <h2>Add Resident</h2>
+                <p>Create a hostel resident record</p>
+            </div>
+
+            <button
+                class="modal-close"
+                onclick="closeResidentModal()"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <form id="residentForm">
+
+            <div class="form-group">
+
+                <label>Name</label>
+
+                <input
+                    type="text"
+                    id="residentName"
+                    placeholder="Resident name"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Room Number</label>
+
+                <input
+                    type="text"
+                    id="residentRoom"
+                    placeholder="Example: A101"
+                    required
+                >
+
+            </div>
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    onclick="closeResidentModal()"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Add Resident
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script src="/js/app.js"></script>
+
+</body>
+</html>
